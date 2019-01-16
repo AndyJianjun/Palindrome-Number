@@ -1,0 +1,41 @@
+class Solution {
+    private List<Integer> intToArrayList(int x)
+    {
+        List<Integer> temp = new ArrayList<Integer>();
+        
+        while (x != 0)
+        {
+            int num = x % 10;
+            temp.add(num);
+            
+            x = x / 10;
+        }
+        return temp;
+    }
+    
+    public boolean isPalindrome(int x) {
+        if (x == 0)
+            return true;
+        if (x < 0)
+            return false;
+        
+        else
+        {
+            List<Integer> intList = intToArrayList(x);
+            
+            int head = 0;
+            int tail = intList.size() - 1;
+            
+            while (head < tail)
+            {
+                if (intList.get(head) != intList.get(tail))
+                {
+                    return false;
+                }
+                head++;
+                tail--;
+            }
+            return true;
+        }
+    }
+}
